@@ -130,12 +130,21 @@ public class ArrCharOps {
      *  The hash value of an empty array is zero.
      */
     public static long hashCode(char[] arr) {
-        long hashCode = 0;
-        for (int i = 0; i < arr.length; i++) {
-            hashCode =  arr[i]*7^(arr.length -1 - i) + hashCode;}
-
-        return hashCode;
+        if (arr == null || arr.length == 0) {
+        return 0;
     }
+    
+    long hash = 0;
+    int n = arr.length;
+    
+    for (int i = 0; i < n; i++) {
+    int exponent = n - 1 - i;
+    double term = (double)arr[i] * Math.pow(7, exponent);
+     hash += (long)term; 
+    }
+    return hash;
+}  
+    
 
     /**
      * Compares the two strings lexicographically.
@@ -163,6 +172,9 @@ public class ArrCharOps {
      *         return -2 if there is an error with the input.
      */
     public static int compareTo(String str1, String str2) {
+        if (str1 == null || str2 == null || str1.isEmpty() || str2.isEmpty()) {
+        return -2;
+    }
         int minLength = Math.min(str1.length(), str2.length());
 
     for (int i = 0; i < minLength; i++) {
