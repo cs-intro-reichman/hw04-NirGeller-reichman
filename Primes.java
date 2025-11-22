@@ -18,13 +18,20 @@ public class Primes {
         arr[j] = false;
             }
         }}
-
+         System.out.println("Prime numbers up to " + n + ":");
         for (int i=2; i<=n; i++){
             if (arr[i] == true){
              System.out.println(i);
             }
-                
+            
+            }
+                int count =0;
+            for (int i=2; i<=n; i++){
+                if (arr[i] == true){
+                    count++;
+                }
     }
+    System.out.println("There are "+ count +" primes between 2 and "+ n+ " (" + (int)(((double)count/n)*100) + "% are primes)");
         
 }
 }
